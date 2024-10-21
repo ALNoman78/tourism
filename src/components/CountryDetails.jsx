@@ -1,8 +1,9 @@
 import { useState } from "react";
 
-const CountryDetails = ({ countryData , listHandler }) => {
+const CountryDetails = ({ countryData , listHandler , imageHandler }) => {
     const { name, flags , cca3 , subregion , area} = countryData
-
+    
+    // console.log(imageHandler);
     const [isVisited , setVisited] = useState(true)
 
     const toggleHandler = () => {
@@ -24,7 +25,7 @@ const CountryDetails = ({ countryData , listHandler }) => {
                     
                     <div className="card-actions justify-between">
                         <button onClick={() => listHandler(countryData)} className="btn btn-info text-white">Mark as Visit</button>
-                        <button className="btn btn-outline btn-success">Add image</button>
+                        <button className="btn btn-outline btn-success" onClick={() => imageHandler(countryData.flags?.png)}>Add image</button>
                         <button onClick={toggleHandler} className ={isVisited ? 'btn btn-primary' : 'btn btn-error text-white'}>{isVisited ? 'Visited' : 'To Visit'}</button>
                     </div>
                 </div>
